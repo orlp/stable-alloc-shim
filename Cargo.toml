@@ -2,5 +2,10 @@
 name = "stable-alloc-shim"
 version = "0.1.0"
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Orson Peters <orsonpeters@gmail.com>"]
+description = "Stable shims for the Allocator API"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/orlp/stable-alloc-shim"
+readme = "README.md"
+keywords = ["allocator", "api"]
+categories = ["memory-management"]
