@@ -1,6 +1,7 @@
 use core::ptr::{self, NonNull};
 
-use std_alloc::alloc::{Layout, alloc, alloc_zeroed, realloc, dealloc};
+use std_alloc::alloc::{alloc, alloc_zeroed, dealloc, realloc, Layout};
+
 use crate::alloc::{AllocError, Allocator};
 use crate::{assume, layout_dangling, nonnull_as_mut_ptr, nonnull_slice_from_raw_parts};
 
