@@ -1,8 +1,9 @@
 #![no_std]
 #![allow(unused_unsafe)]
 
-//! A simple crate that provides stable copies of the allocator APIs found in
-//! `alloc`, for the purpose of implementing collections targetting stable Rust.
+//! A simple crate that provides stable copies of the unstable allocator APIs
+//! found in `alloc`, for the purpose of implementing collections targetting
+//! stable Rust.
 //!
 //! This crate does not do its own versioning and instead follows the standard
 //! library. As an example, v0.57.x of this crate will have the definitions and
@@ -29,6 +30,7 @@ pub mod slice;
 use core::hint::unreachable_unchecked;
 use core::mem::MaybeUninit;
 use core::ptr::NonNull;
+use std_alloc::alloc::Layout;
 
 // Private stable shims.
 fn nonnull_as_mut_ptr<T>(ptr: NonNull<[T]>) -> *mut T {
@@ -45,7 +47,7 @@ fn nonnull_slice_from_raw_parts<T>(data: NonNull<T>, len: usize) -> NonNull<[T]>
     unsafe { NonNull::new_unchecked(core::ptr::slice_from_raw_parts_mut(data.as_ptr(), len)) }
 }
 
-fn layout_dangling(slf: &alloc::Layout) -> NonNull<u8> {
+fn layout_dangling(slf: &Layout) -> NonNull<u8> {
     unsafe { NonNull::new_unchecked(slf.align() as *mut u8) }
 }
 

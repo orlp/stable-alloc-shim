@@ -1,14 +1,15 @@
 # stable-alloc-shim
 
-A simple crate that provides stable copies of the allocator APIs found in
-`alloc`, for the purpose of implementing collections targetting stable Rust.
+A simple crate that provides stable copies of the unstable allocator APIs
+found in `alloc`, for the purpose of implementing collections targetting
+stable Rust.
 
 ```toml
 [dependencies]
 stable-alloc-shim = "0.57"
 ```
 
-The minimum required Rust version of this crate is Rust 1.50.
+The minimum required Rust version for this crate is Rust 1.50.
 
 This crate does not do its own versioning and instead follows the standard
 library. As an example, v0.57.x of this crate will have the definitions and

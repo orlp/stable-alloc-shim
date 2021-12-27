@@ -1,6 +1,6 @@
 use core::fmt::Display;
 
-use crate::alloc::{Layout, LayoutError};
+use std_alloc::alloc::{Layout, LayoutError};
 
 /// The error type for `try_reserve` methods.
 #[derive(Clone, PartialEq, Eq, Debug)]

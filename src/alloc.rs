@@ -1,9 +1,9 @@
 use core::fmt;
 use core::ptr::{self, NonNull};
 
-pub use std_alloc::alloc::{
-    alloc, alloc_zeroed, dealloc, handle_alloc_error, realloc, GlobalAlloc, Layout, LayoutError,
-};
+use std_alloc::alloc::Layout;
+#[allow(unused)]
+use std_alloc::alloc::GlobalAlloc;
 
 pub use crate::global::Global;
 use crate::{nonnull_as_mut_ptr, nonnull_len};
