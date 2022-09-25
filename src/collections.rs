@@ -1,5 +1,4 @@
 use core::fmt::Display;
-
 use std_alloc::alloc::{Layout, LayoutError};
 
 /// The error type for `try_reserve` methods.
@@ -11,6 +10,7 @@ pub struct TryReserveError {
 impl TryReserveError {
     /// Details about the allocation that caused the error
     #[inline]
+    #[must_use]
     pub fn kind(&self) -> TryReserveErrorKind {
         self.kind.clone()
     }
@@ -57,10 +57,10 @@ impl Display for TryReserveError {
         let reason = match self.kind {
             TryReserveErrorKind::CapacityOverflow => {
                 " because the computed capacity exceeded the collection's maximum"
-            },
+            }
             TryReserveErrorKind::AllocError { .. } => {
                 " because the memory allocator returned a error"
-            },
+            }
         };
         fmt.write_str(reason)
     }

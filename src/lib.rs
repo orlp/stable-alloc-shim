@@ -29,10 +29,15 @@
 
 extern crate alloc as std_alloc;
 
-pub mod alloc;
+mod alloc_alloc; // alloc/alloc.rs
+mod core_alloc; // core/alloc/mod.rs
+
+pub mod alloc {
+    pub use crate::alloc_alloc::Global;
+    pub use crate::core_alloc::{AllocError, Allocator};
+}
+
 pub mod collections;
-mod global;
-pub mod slice;
 
 use core::hint::unreachable_unchecked;
 use core::mem::MaybeUninit;
@@ -55,8 +60,12 @@ fn nonnull_slice_from_raw_parts<T>(data: NonNull<T>, len: usize) -> NonNull<[T]>
     unsafe { NonNull::new_unchecked(core::ptr::slice_from_raw_parts_mut(data.as_ptr(), len)) }
 }
 
+fn invalid_mut<T>(addr: usize) -> *mut T {
+    unsafe { core::mem::transmute(addr) }
+}
+
 fn layout_dangling(slf: &Layout) -> NonNull<u8> {
-    unsafe { NonNull::new_unchecked(slf.align() as *mut u8) }
+    unsafe { NonNull::new_unchecked(invalid_mut(slf.align())) }
 }
 
 unsafe fn assume(b: bool) {

@@ -6,14 +6,14 @@ stable Rust.
 
 ```toml
 [dependencies]
-stable-alloc-shim = "0.57"
+stable-alloc-shim = "0.64"
 ```
 
 The minimum required Rust version for this crate is Rust 1.50.
 
 This crate does not do its own versioning and instead follows the standard
-library. As an example, v0.57.x of this crate will have the definitions and
-implementations of the allocator API as they were in Rust version 1.57. The
+library. As an example, v0.64.x of this crate will have the definitions and
+implementations of the allocator API as they were in Rust version 1.64. The
 x will be reserved for fixing errors, and applying the
 [semver trick](https://github.com/dtolnay/semver-trick) for future
 compatibility.

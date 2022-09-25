@@ -1,6 +1,6 @@
 [package]
 name = "stable-alloc-shim"
-version = "0.1.0"
+version = "0.64.0"
 edition = "2018"
 authors = ["Orson Peters <orsonpeters@gmail.com>"]
 description = "Stable shims for the Allocator API"
